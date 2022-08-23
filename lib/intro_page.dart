@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intro_eeee/bio_page.dart';
 import 'package:intro_eeee/colors.dart';
 import 'package:intro_eeee/game_page.dart';
+import 'package:intro_eeee/intro_page_card.dart';
 import 'package:intro_eeee/navigation_template.dart';
 
 class IntroPage extends StatefulWidget {
@@ -44,6 +45,8 @@ class _IntroPageState extends State<IntroPage> {
           .pushReplacement(getRoute(const BioPage(), 'up')),
       right: () => Navigator.of(context)
           .pushReplacement(getRoute(const GamePage(), 'right')),
+      left: () => Navigator.of(context)
+          .pushReplacement(getRoute(const IntroCardPage(), 'left')),
     );
   }
 }
