@@ -1,5 +1,6 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:intro_eeee/education_page.dart';
 import 'package:intro_eeee/intro_page_card.dart';
 import 'package:intro_eeee/navigation_template.dart';
 import 'constants.dart';
@@ -41,6 +42,8 @@ class IntroRunningText extends StatelessWidget {
                 alignment: Alignment.center,
                 child: GestureDetector(
                   child: TextLiquidFill(
+                    loadUntil: 0.8,
+                    waveDuration: const Duration(seconds: 3),
                     loadDuration: const Duration(seconds: 2),
                     text: greetingQuestion,
                     textAlign: TextAlign.center,
@@ -53,7 +56,7 @@ class IntroRunningText extends StatelessWidget {
                   ),
                   onTap: () => {
                     Navigator.of(context)
-                        .push(getRoute(const IntroCardPage(), 'down'))
+                        .push(getRoute(const EducationPage(), 'down'))
                   },
                 ),
               ),
