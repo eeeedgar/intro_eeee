@@ -154,9 +154,9 @@ class _NavigationTemplateState extends State<NavigationTemplate> {
 Route getRoute(Widget page, String direction) {
   return PageRouteBuilder(
     pageBuilder: (context, animation, secondaryAnimation) => page,
-    // transitionsBuilder: (context, animation, secondaryAnimation, child) {
-    //   return getSlideTransition(context, animation, secondaryAnimation, child, direction);
-    // },
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      return getSlideTransition(context, animation, secondaryAnimation, child, direction);
+    },
   );
 }
 
