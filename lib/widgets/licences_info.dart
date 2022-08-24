@@ -17,7 +17,7 @@ class LicencesInfo extends StatelessWidget {
               fontSize: 50,
               color: fontYellow,
             ),
-          )
+          ),
         ],
       ),
     );

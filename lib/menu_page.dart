@@ -34,107 +34,113 @@ class _MenuPageState extends State<MenuPage> {
       backgroundColor: backgroundBlue,
       body: Row(
         children: [
-          Container(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Column(
-                    children: [
-                      getButtonWithText(
-                        'back',
-                        () => Navigator.of(context).pop(),
-                      ),
-                      (selectedPage == Page.personal)
-                          ? getBlinkText('personal')
-                          : getButtonWithText(
-                              'personal',
-                              () {
-                                setState(
-                                  () {
-                                    selectedPage = Page.personal;
-                                  },
-                                );
-                              },
-                            ),
-                      (selectedPage == Page.education)
-                          ? getBlinkText('education')
-                          : getButtonWithText(
-                              'education',
-                              () {
-                                setState(
-                                  () {
-                                    selectedPage = Page.education;
-                                  },
-                                );
-                              },
-                            ),
-                      (selectedPage == Page.work)
-                          ? getBlinkText('work experience')
-                          : getButtonWithText(
-                              'work experience',
-                              () {
-                                setState(
-                                  () {
-                                    selectedPage = Page.work;
-                                  },
-                                );
-                              },
-                            ),
-                      (selectedPage == Page.licences)
-                          ? getBlinkText('licences')
-                          : getButtonWithText(
-                        'licences',
-                            () {
-                          setState(
-                                () {
-                              selectedPage = Page.licences;
-                            },
-                          );
-                        },
-                      ),
-                      (selectedPage == Page.contacts)
-                          ? getBlinkText('contacts')
-                          : getButtonWithText(
-                        'contacts',
-                            () {
-                          setState(
-                                () {
-                              selectedPage = Page.contacts;
-                            },
-                          );
-                        },
-                      ),
-                      GestureDetector(
-                        child: const Text(
-                          randomInfoButton,
-                          style: TextStyle(
-                            fontFamily: 'FeatureMono',
-                            fontSize: 50,
-                            color: fontYellow,
-                          ),
-                        ),
-                        onTap: () => _showFloatingFlushBar(context),
-                      ),
-                    ],
+          _left(),
+          _right(),
+        ],
+      ),
+    );
+  }
+
+  Widget _left() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Column(
+            children: [
+              getButtonWithText(
+                'back',
+                    () => Navigator.of(context).pop(),
+              ),
+              (selectedPage == Page.personal)
+                  ? getBlinkText('personal')
+                  : getButtonWithText(
+                'personal',
+                    () {
+                  setState(
+                        () {
+                      selectedPage = Page.personal;
+                    },
+                  );
+                },
+              ),
+              (selectedPage == Page.education)
+                  ? getBlinkText('education')
+                  : getButtonWithText(
+                'education',
+                    () {
+                  setState(
+                        () {
+                      selectedPage = Page.education;
+                    },
+                  );
+                },
+              ),
+              (selectedPage == Page.work)
+                  ? getBlinkText('work experience')
+                  : getButtonWithText(
+                'work experience',
+                    () {
+                  setState(
+                        () {
+                      selectedPage = Page.work;
+                    },
+                  );
+                },
+              ),
+              (selectedPage == Page.licences)
+                  ? getBlinkText('licences')
+                  : getButtonWithText(
+                'licences',
+                    () {
+                  setState(
+                        () {
+                      selectedPage = Page.licences;
+                    },
+                  );
+                },
+              ),
+              (selectedPage == Page.contacts)
+                  ? getBlinkText('contacts')
+                  : getButtonWithText(
+                'contacts',
+                    () {
+                  setState(
+                        () {
+                      selectedPage = Page.contacts;
+                    },
+                  );
+                },
+              ),
+              GestureDetector(
+                child: const Text(
+                  randomInfoButton,
+                  style: TextStyle(
+                    fontFamily: 'FeatureMono',
+                    fontSize: 50,
+                    color: fontYellow,
                   ),
                 ),
-                const VerticalDivider(
-                  thickness: 10,
-                  color: fontYellow,
-                ),
-              ],
-            ),
+                onTap: () => _showFloatingFlushBar(context),
+              ),
+            ],
           ),
-          Flexible(
-            flex: 3,
-            child: Padding(
-              padding: const EdgeInsets.only(left: 20, right: 20),
-              child: SingleChildScrollView(child: _getPage()),
-            ),
-          ),
-        ],
+        ),
+        const VerticalDivider(
+          thickness: 10,
+          color: fontYellow,
+        ),
+      ],
+    );
+  }
+
+  Widget _right() {
+    return Flexible(
+      flex: 3,
+      child: Padding(
+        padding: const EdgeInsets.only(left: 20, right: 20),
+        child: SingleChildScrollView(child: _getPage()),
       ),
     );
   }
