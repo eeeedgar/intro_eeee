@@ -1,3 +1,4 @@
+import 'package:blinking_text/blinking_text.dart';
 import 'package:flutter/material.dart';
 import 'package:intro_eeee/constants.dart';
 
@@ -40,4 +41,17 @@ class _BlinkIconState extends State<BlinkIcon> with SingleTickerProviderStateMix
       },
     );
   }
+}
+
+BlinkText getBlinkText(String text) {
+  return BlinkText(
+    text,
+    style: const TextStyle(
+      fontFamily: 'FeatureMono',
+      fontSize: 50,
+      color: fontYellow,
+    ),
+    endColor: Colors.red,
+    duration: const Duration(milliseconds: 500),
+  );
 }

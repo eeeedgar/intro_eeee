@@ -3,6 +3,7 @@ import 'package:blinking_text/blinking_text.dart';
 import 'package:flutter/material.dart';
 import 'package:intro_eeee/menu_page.dart';
 import 'package:intro_eeee/navigation_template.dart';
+import 'package:intro_eeee/widgets/blink.dart';
 import 'constants.dart';
 
 class IntroRunningText extends StatelessWidget {

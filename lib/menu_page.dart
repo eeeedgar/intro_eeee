@@ -1,7 +1,7 @@
 import 'package:blinking_text/blinking_text.dart';
 import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
-import 'package:intro_eeee/widgets/blink_icon.dart';
+import 'package:intro_eeee/widgets/blink.dart';
 import 'package:intro_eeee/widgets/contacts_info.dart';
 import 'package:intro_eeee/widgets/educational_info.dart';
 import 'package:intro_eeee/widgets/licences_info.dart';
@@ -49,13 +49,13 @@ class _MenuPageState extends State<MenuPage> {
           padding: const EdgeInsets.all(10.0),
           child: Column(
             children: [
-              getButtonWithText(
+              _getButtonWithText(
                 'back',
                     () => Navigator.of(context).pop(),
               ),
               (selectedPage == Page.personal)
                   ? getBlinkText('personal')
-                  : getButtonWithText(
+                  : _getButtonWithText(
                 'personal',
                     () {
                   setState(
@@ -67,7 +67,7 @@ class _MenuPageState extends State<MenuPage> {
               ),
               (selectedPage == Page.education)
                   ? getBlinkText('education')
-                  : getButtonWithText(
+                  : _getButtonWithText(
                 'education',
                     () {
                   setState(
@@ -79,7 +79,7 @@ class _MenuPageState extends State<MenuPage> {
               ),
               (selectedPage == Page.work)
                   ? getBlinkText('work experience')
-                  : getButtonWithText(
+                  : _getButtonWithText(
                 'work experience',
                     () {
                   setState(
@@ -91,7 +91,7 @@ class _MenuPageState extends State<MenuPage> {
               ),
               (selectedPage == Page.licences)
                   ? getBlinkText('licences')
-                  : getButtonWithText(
+                  : _getButtonWithText(
                 'licences',
                     () {
                   setState(
@@ -103,7 +103,7 @@ class _MenuPageState extends State<MenuPage> {
               ),
               (selectedPage == Page.contacts)
                   ? getBlinkText('contacts')
-                  : getButtonWithText(
+                  : _getButtonWithText(
                 'contacts',
                     () {
                   setState(
@@ -206,31 +206,18 @@ class _MenuPageState extends State<MenuPage> {
 
     return widget;
   }
-}
 
-BlinkText getBlinkText(String text) {
-  return BlinkText(
-    text,
-    style: const TextStyle(
-      fontFamily: 'FeatureMono',
-      fontSize: 50,
-      color: fontYellow,
-    ),
-    endColor: Colors.red,
-    duration: const Duration(milliseconds: 500),
-  );
-}
-
-getButtonWithText(String text, Function onPressed) {
-  return GestureDetector(
-    child: Text(
-      text,
-      style: const TextStyle(
-        fontFamily: 'FeatureMono',
-        fontSize: 50,
-        color: fontYellow,
+  _getButtonWithText(String text, Function onPressed) {
+    return GestureDetector(
+      child: Text(
+        text,
+        style: const TextStyle(
+          fontFamily: 'FeatureMono',
+          fontSize: 50,
+          color: fontYellow,
+        ),
       ),
-    ),
-    onTap: () => onPressed(),
-  );
+      onTap: () => onPressed(),
+    );
+  }
 }
