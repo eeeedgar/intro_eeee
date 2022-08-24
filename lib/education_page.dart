@@ -6,14 +6,14 @@ import 'package:flutter/material.dart';
 import 'package:intro_eeee/BlinkIcon.dart';
 import 'constants.dart';
 
-class EducationPage extends StatefulWidget {
-  const EducationPage({Key? key}) : super(key: key);
+class MenuPage extends StatefulWidget {
+  const MenuPage({Key? key}) : super(key: key);
 
   @override
-  State<EducationPage> createState() => _EducationPageState();
+  State<MenuPage> createState() => _MenuPageState();
 }
 
-class _EducationPageState extends State<EducationPage> {
+class _MenuPageState extends State<MenuPage> {
   int randomFactNumber = 0;
 
   @override

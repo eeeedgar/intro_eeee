@@ -49,7 +49,7 @@ class IntroRunningText extends StatelessWidget {
                     ),
                 onTap: () => {
                   Navigator.of(context)
-                      .push(getRoute(const EducationPage(), 'down'))
+                      .push(getRoute(const MenuPage(), 'down'))
                 },
               ),
             ),
