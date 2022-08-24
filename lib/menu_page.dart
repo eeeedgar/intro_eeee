@@ -1,10 +1,21 @@
-import 'dart:math';
-
 import 'package:blinking_text/blinking_text.dart';
 import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
-import 'package:intro_eeee/BlinkIcon.dart';
+import 'package:intro_eeee/widgets/blink_icon.dart';
+import 'package:intro_eeee/widgets/contacts_info.dart';
+import 'package:intro_eeee/widgets/educational_info.dart';
+import 'package:intro_eeee/widgets/licences_info.dart';
+import 'package:intro_eeee/widgets/personal_info_widget.dart';
+import 'package:intro_eeee/widgets/work_info.dart';
 import 'constants.dart';
+
+enum Page {
+  personal,
+  education,
+  work,
+  licences,
+  contacts,
+}
 
 class MenuPage extends StatefulWidget {
   const MenuPage({Key? key}) : super(key: key);
@@ -15,6 +26,7 @@ class MenuPage extends StatefulWidget {
 
 class _MenuPageState extends State<MenuPage> {
   int randomFactNumber = 0;
+  Page selectedPage = Page.personal;
 
   @override
   Widget build(BuildContext context) {
@@ -30,20 +42,69 @@ class _MenuPageState extends State<MenuPage> {
                   padding: const EdgeInsets.all(10.0),
                   child: Column(
                     children: [
-                      GestureDetector(
-                        child: const Text(
-                          'back',
-                          style: TextStyle(
-                            fontFamily: 'FeatureMono',
-                            fontSize: 50,
-                            color: fontYellow,
-                          ),
-                        ),
-                        onTap: () => Navigator.of(context).pop(),
-                      ),
                       getButtonWithText(
-                        'education',
+                        'back',
                         () => Navigator.of(context).pop(),
+                      ),
+                      (selectedPage == Page.personal)
+                          ? getBlinkText('personal')
+                          : getButtonWithText(
+                              'personal',
+                              () {
+                                setState(
+                                  () {
+                                    selectedPage = Page.personal;
+                                  },
+                                );
+                              },
+                            ),
+                      (selectedPage == Page.education)
+                          ? getBlinkText('education')
+                          : getButtonWithText(
+                              'education',
+                              () {
+                                setState(
+                                  () {
+                                    selectedPage = Page.education;
+                                  },
+                                );
+                              },
+                            ),
+                      (selectedPage == Page.work)
+                          ? getBlinkText('work experience')
+                          : getButtonWithText(
+                              'work experience',
+                              () {
+                                setState(
+                                  () {
+                                    selectedPage = Page.work;
+                                  },
+                                );
+                              },
+                            ),
+                      (selectedPage == Page.licences)
+                          ? getBlinkText('licences')
+                          : getButtonWithText(
+                        'licences',
+                            () {
+                          setState(
+                                () {
+                              selectedPage = Page.licences;
+                            },
+                          );
+                        },
+                      ),
+                      (selectedPage == Page.contacts)
+                          ? getBlinkText('contacts')
+                          : getButtonWithText(
+                        'contacts',
+                            () {
+                          setState(
+                                () {
+                              selectedPage = Page.contacts;
+                            },
+                          );
+                        },
                       ),
                       GestureDetector(
                         child: const Text(
@@ -66,17 +127,11 @@ class _MenuPageState extends State<MenuPage> {
               ],
             ),
           ),
-          const Flexible(
+          Flexible(
             flex: 3,
-            child: Center(
-              child: Text(
-                'right',
-                style: TextStyle(
-                  fontFamily: 'FeatureMono',
-                  fontSize: 50,
-                  color: fontYellow,
-                ),
-              ),
+            child: Padding(
+              padding: const EdgeInsets.only(left: 20, right: 20),
+              child: SingleChildScrollView(child: _getPage()),
             ),
           ),
         ],
@@ -85,14 +140,11 @@ class _MenuPageState extends State<MenuPage> {
   }
 
   void _showFloatingFlushBar(BuildContext context) {
-
     String fact;
 
-    if (facts.isEmpty)
-      {
-        fact = 'there is no facts, only interpretations';
-      }
-    else {
+    if (facts.isEmpty) {
+      fact = 'there is no facts, only interpretations';
+    } else {
       fact = facts[randomFactNumber++];
       if (randomFactNumber == facts.length) {
         randomFactNumber = 0;
@@ -100,6 +152,7 @@ class _MenuPageState extends State<MenuPage> {
     }
 
     Flushbar(
+      maxWidth: 800,
       padding: const EdgeInsets.all(40),
       messageText: Center(
         child: Text(
@@ -111,17 +164,41 @@ class _MenuPageState extends State<MenuPage> {
           ),
         ),
       ),
-      //message: 'lol',
       backgroundColor: Colors.blueGrey,
       duration: const Duration(seconds: 3),
       margin: const EdgeInsets.all(20),
       icon:
-      // const Icon(
-      //   Icons.info_outline,
-      //   color: fontYellow,
-      // ),
-      BlinkIcon(),
+          // const Icon(
+          //   Icons.info_outline,
+          //   color: fontYellow,
+          // ),
+          BlinkIcon(),
     ).show(context);
+  }
+
+  Widget _getPage() {
+    Widget widget;
+
+    switch (selectedPage) {
+      case Page.personal:
+        widget = const PersonalInfo();
+        break;
+
+      case Page.education:
+        widget = const EducationalInfo();
+        break;
+      case Page.work:
+        widget = const WorkInfo();
+        break;
+      case Page.licences:
+        widget = const LicencesInfo();
+        break;
+      case Page.contacts:
+        widget = const ContactsInfo();
+        break;
+    }
+
+    return widget;
   }
 }
 
@@ -137,7 +214,6 @@ BlinkText getBlinkText(String text) {
     duration: const Duration(milliseconds: 500),
   );
 }
-
 
 getButtonWithText(String text, Function onPressed) {
   return GestureDetector(

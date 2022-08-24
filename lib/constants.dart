@@ -20,3 +20,11 @@ const facts = [
 
 const fontLicence =
     'This website uses cool font. Feature Mono developed by Anastasia Vrublevskaya at HSE ART AND DESIGN SCHOOL';
+
+const personalInfo = 'First name: Edgar\nLast name: Rakhmankulov\nPlace of birth: Saint-Petersburg, Russia\nDate of birth: 30/07/2002';
+
+const educationalInfo = 'University: ITMO\nFaculty (rus): ИТИП | ИС\n> Undergraduate\n> Graduation year: 2024\n\nSchool: Presidential Physics and Mathematics Lyceum №239';
+
+const workInfo = 'Flutter-developer:\n> Vintelligent\n> january 2022 - may 2022';
+
+const contactsInfo = 'e-mail:\n> edgar.rakhmankulov@yandex.ru\n\ntelegram:\n> @eeeedgar\n\ngithub:\n> github.com/eeeedgar';

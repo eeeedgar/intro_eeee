@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:intro_eeee/intro_page.dart';
-import 'package:intro_eeee/intro_page_card.dart';
 import 'package:intro_eeee/intro_running_text.dart';
 
 void main() {
