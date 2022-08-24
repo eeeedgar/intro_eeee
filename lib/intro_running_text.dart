@@ -1,7 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:blinking_text/blinking_text.dart';
 import 'package:flutter/material.dart';
-import 'package:intro_eeee/education_page.dart';
+import 'package:intro_eeee/menu_page.dart';
 import 'package:intro_eeee/intro_page_card.dart';
 import 'package:intro_eeee/navigation_template.dart';
 import 'constants.dart';
