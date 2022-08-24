@@ -1,9 +1,20 @@
+import 'dart:math';
+
 import 'package:blinking_text/blinking_text.dart';
+import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
+import 'package:intro_eeee/BlinkIcon.dart';
 import 'constants.dart';
 
-class EducationPage extends StatelessWidget {
+class EducationPage extends StatefulWidget {
   const EducationPage({Key? key}) : super(key: key);
+
+  @override
+  State<EducationPage> createState() => _EducationPageState();
+}
+
+class _EducationPageState extends State<EducationPage> {
+  int randomFactNumber = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -11,29 +22,40 @@ class EducationPage extends StatelessWidget {
       backgroundColor: backgroundBlue,
       body: Row(
         children: [
-          Flexible(
+          Container(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: Column(
-                    children: const [
-                      Text(
-                        'left',
-                        style: TextStyle(
-                          fontFamily: 'FeatureMono',
-                          fontSize: 50,
-                          color: fontYellow,
+                    children: [
+                      GestureDetector(
+                        child: const Text(
+                          'back',
+                          style: TextStyle(
+                            fontFamily: 'FeatureMono',
+                            fontSize: 50,
+                            color: fontYellow,
+                          ),
                         ),
+                        onTap: () => Navigator.of(context).pop(),
                       ),
-                      BlinkText('Blink', style: TextStyle(
-                        fontFamily: 'FeatureMono',
-                        fontSize: 50,
-                        color: fontYellow,
+                      getButtonWithText(
+                        'education',
+                        () => Navigator.of(context).pop(),
                       ),
-                      endColor: Colors.red,
-                      duration: Duration(milliseconds: 500),)
+                      GestureDetector(
+                        child: const Text(
+                          randomInfoButton,
+                          style: TextStyle(
+                            fontFamily: 'FeatureMono',
+                            fontSize: 50,
+                            color: fontYellow,
+                          ),
+                        ),
+                        onTap: () => _showFloatingFlushBar(context),
+                      ),
                     ],
                   ),
                 ),
@@ -44,7 +66,6 @@ class EducationPage extends StatelessWidget {
               ],
             ),
           ),
-
           const Flexible(
             flex: 3,
             child: Center(
@@ -62,4 +83,72 @@ class EducationPage extends StatelessWidget {
       ),
     );
   }
+
+  void _showFloatingFlushBar(BuildContext context) {
+
+    String fact;
+
+    if (facts.isEmpty)
+      {
+        fact = 'there is no facts, only interpretations';
+      }
+    else {
+      fact = facts[randomFactNumber++];
+      if (randomFactNumber == facts.length) {
+        randomFactNumber = 0;
+      }
+    }
+
+    Flushbar(
+      padding: const EdgeInsets.all(40),
+      messageText: Center(
+        child: Text(
+          fact,
+          style: const TextStyle(
+            fontFamily: 'FeatureMono',
+            color: fontYellow,
+            fontSize: 30,
+          ),
+        ),
+      ),
+      //message: 'lol',
+      backgroundColor: Colors.blueGrey,
+      duration: const Duration(seconds: 3),
+      margin: const EdgeInsets.all(20),
+      icon:
+      // const Icon(
+      //   Icons.info_outline,
+      //   color: fontYellow,
+      // ),
+      BlinkIcon(),
+    ).show(context);
+  }
+}
+
+BlinkText getBlinkText(String text) {
+  return BlinkText(
+    text,
+    style: const TextStyle(
+      fontFamily: 'FeatureMono',
+      fontSize: 50,
+      color: fontYellow,
+    ),
+    endColor: Colors.red,
+    duration: const Duration(milliseconds: 500),
+  );
+}
+
+
+getButtonWithText(String text, Function onPressed) {
+  return GestureDetector(
+    child: Text(
+      text,
+      style: const TextStyle(
+        fontFamily: 'FeatureMono',
+        fontSize: 50,
+        color: fontYellow,
+      ),
+    ),
+    onTap: () => onPressed(),
+  );
 }

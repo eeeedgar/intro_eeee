@@ -1,4 +1,5 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:blinking_text/blinking_text.dart';
 import 'package:flutter/material.dart';
 import 'package:intro_eeee/education_page.dart';
 import 'package:intro_eeee/intro_page_card.dart';
@@ -38,27 +39,18 @@ class IntroRunningText extends StatelessWidget {
             ),
             Flexible(
               flex: 2,
-              child: Container(
-                alignment: Alignment.center,
-                child: GestureDetector(
-                  child: TextLiquidFill(
-                    loadUntil: 0.8,
-                    waveDuration: const Duration(seconds: 3),
-                    loadDuration: const Duration(seconds: 2),
-                    text: greetingQuestion,
-                    textAlign: TextAlign.center,
-                    textStyle: const TextStyle(
-                      fontFamily: 'FeatureMono',
-                      fontSize: 50,
+              child: GestureDetector(
+                child: Container(
+                      color: Colors.blueGrey,
+                      alignment: Alignment.center,
+                      width: 700,
+
+                      child: getBlinkText(greetingQuestion)
                     ),
-                    waveColor: fontYellow,
-                    boxBackgroundColor: Colors.blueGrey,
-                  ),
-                  onTap: () => {
-                    Navigator.of(context)
-                        .push(getRoute(const EducationPage(), 'down'))
-                  },
-                ),
+                onTap: () => {
+                  Navigator.of(context)
+                      .push(getRoute(const EducationPage(), 'down'))
+                },
               ),
             ),
           ],
