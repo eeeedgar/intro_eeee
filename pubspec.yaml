@@ -38,6 +38,7 @@ dependencies:
   animated_text_kit: ^4.2.2
   blinking_text: ^1.0.2
   another_flushbar: ^1.10.29
+  url_launcher: ^6.1.5
 
 
 dev_dependencies:

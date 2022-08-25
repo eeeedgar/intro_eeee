@@ -43,13 +43,14 @@ class _BlinkIconState extends State<BlinkIcon> with SingleTickerProviderStateMix
   }
 }
 
-BlinkText getBlinkText(String text) {
+BlinkText getBlinkText(String text, {double fontSize = 40}) {
   return BlinkText(
     text,
-    style: const TextStyle(
+    style: TextStyle(
       fontFamily: 'FeatureMono',
-      fontSize: 50,
+      fontSize: fontSize,
       color: fontYellow,
+      fontWeight: FontWeight.normal,
     ),
     endColor: Colors.red,
     duration: const Duration(milliseconds: 500),

@@ -10,7 +10,7 @@ const madeWithFlutter = 'this website is made with Flutter';
 
 const randomInfoButton = 'get random fact';
 const fact1 = 'my first dog\'s name was Rex';
-const fact2 = 'I am 6\'0" tall';
+const fact2 = 'this website is made with love';
 
 const facts = [
   madeWithFlutter,
@@ -19,7 +19,7 @@ const facts = [
 ];
 
 const fontLicence =
-    'This website uses cool font. Feature Mono developed by Anastasia Vrublevskaya at HSE ART AND DESIGN SCHOOL';
+    'This website uses font Feature Mono developed by Anastasia Vrublevskaya at HSE ART AND DESIGN SCHOOL';
 
 const personalInfo = 'First name: Edgar\nLast name: Rakhmankulov\nPlace of birth: Saint-Petersburg, Russia\nDate of birth: 30/07/2002';
 

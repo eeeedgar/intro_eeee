@@ -10,12 +10,15 @@ class LicencesInfo extends StatelessWidget {
       alignment: Alignment.topLeft,
       child: Column(
         children: const [
-          Text(
-            fontLicence,
-            style: TextStyle(
-              fontFamily: 'FeatureMono',
-              fontSize: 50,
-              color: fontYellow,
+          Padding(
+            padding: EdgeInsets.fromLTRB(8, 20, 8, 8),
+            child: Text(
+              fontLicence,
+              style: TextStyle(
+                fontFamily: 'FeatureMono',
+                fontSize: 30,
+                color: fontYellow,
+              ),
             ),
           ),
         ],

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:intro_eeee/intro_running_text.dart';
+import 'package:intro_eeee/intro.dart';
 
 void main() {
   runApp(const EeeeApp());
@@ -13,7 +13,7 @@ class EeeeApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: IntroRunningText(),
+      home: Intro(),
     );
   }
 }

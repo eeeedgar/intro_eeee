@@ -6,16 +6,11 @@ import 'package:intro_eeee/widgets/contacts_info.dart';
 import 'package:intro_eeee/widgets/educational_info.dart';
 import 'package:intro_eeee/widgets/licences_info.dart';
 import 'package:intro_eeee/widgets/personal_info_widget.dart';
+import 'package:intro_eeee/widgets/skills_info.dart';
 import 'package:intro_eeee/widgets/work_info.dart';
 import 'constants.dart';
 
-enum Page {
-  personal,
-  education,
-  work,
-  licences,
-  contacts,
-}
+enum Page { personal, education, work, licences, contacts, skills }
 
 class MenuPage extends StatefulWidget {
   const MenuPage({Key? key}) : super(key: key);
@@ -46,89 +41,106 @@ class _MenuPageState extends State<MenuPage> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Column(
-            children: [
-              _getButtonWithText(
-                'back',
+          padding: const EdgeInsets.only(left: 20, right: 20),
+          child: Container(
+            alignment: Alignment.topLeft,
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  _getButtonWithText(
+                    'back',
                     () => Navigator.of(context).pop(),
-              ),
-              (selectedPage == Page.personal)
-                  ? getBlinkText('personal')
-                  : _getButtonWithText(
-                'personal',
-                    () {
-                  setState(
-                        () {
-                      selectedPage = Page.personal;
-                    },
-                  );
-                },
-              ),
-              (selectedPage == Page.education)
-                  ? getBlinkText('education')
-                  : _getButtonWithText(
-                'education',
-                    () {
-                  setState(
-                        () {
-                      selectedPage = Page.education;
-                    },
-                  );
-                },
-              ),
-              (selectedPage == Page.work)
-                  ? getBlinkText('work experience')
-                  : _getButtonWithText(
-                'work experience',
-                    () {
-                  setState(
-                        () {
-                      selectedPage = Page.work;
-                    },
-                  );
-                },
-              ),
-              (selectedPage == Page.licences)
-                  ? getBlinkText('licences')
-                  : _getButtonWithText(
-                'licences',
-                    () {
-                  setState(
-                        () {
-                      selectedPage = Page.licences;
-                    },
-                  );
-                },
-              ),
-              (selectedPage == Page.contacts)
-                  ? getBlinkText('contacts')
-                  : _getButtonWithText(
-                'contacts',
-                    () {
-                  setState(
-                        () {
-                      selectedPage = Page.contacts;
-                    },
-                  );
-                },
-              ),
-              GestureDetector(
-                child: const Text(
-                  randomInfoButton,
-                  style: TextStyle(
-                    fontFamily: 'FeatureMono',
-                    fontSize: 50,
-                    color: fontYellow,
                   ),
-                ),
-                onTap: () => _showFloatingFlushBar(context),
+                  (selectedPage == Page.personal)
+                      ? getBlinkText('personal')
+                      : _getButtonWithText(
+                          'personal',
+                          () {
+                            setState(
+                              () {
+                                selectedPage = Page.personal;
+                              },
+                            );
+                          },
+                        ),
+                  (selectedPage == Page.contacts)
+                      ? getBlinkText('contacts')
+                      : _getButtonWithText(
+                          'contacts',
+                          () {
+                            setState(
+                              () {
+                                selectedPage = Page.contacts;
+                              },
+                            );
+                          },
+                        ),
+                  (selectedPage == Page.education)
+                      ? getBlinkText('education')
+                      : _getButtonWithText(
+                          'education',
+                          () {
+                            setState(
+                              () {
+                                selectedPage = Page.education;
+                              },
+                            );
+                          },
+                        ),
+                  (selectedPage == Page.skills)
+                      ? getBlinkText('skills')
+                      : _getButtonWithText(
+                          'skills',
+                          () {
+                            setState(
+                              () {
+                                selectedPage = Page.skills;
+                              },
+                            );
+                          },
+                        ),
+                  (selectedPage == Page.work)
+                      ? getBlinkText('work experience')
+                      : _getButtonWithText(
+                          'work experience',
+                          () {
+                            setState(
+                              () {
+                                selectedPage = Page.work;
+                              },
+                            );
+                          },
+                        ),
+                  (selectedPage == Page.licences)
+                      ? getBlinkText('licences')
+                      : _getButtonWithText(
+                          'licences',
+                          () {
+                            setState(
+                              () {
+                                selectedPage = Page.licences;
+                              },
+                            );
+                          },
+                        ),
+                  GestureDetector(
+                    child: const Text(
+                      randomInfoButton,
+                      style: TextStyle(
+                        fontFamily: 'FeatureMono',
+                        fontSize: 40,
+                        color: fontYellow,
+                      ),
+                    ),
+                    onTap: () => _showFloatingFlushBar(context),
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
         ),
         const VerticalDivider(
-          thickness: 10,
+          thickness: 5,
           color: fontYellow,
         ),
       ],
@@ -140,7 +152,12 @@ class _MenuPageState extends State<MenuPage> {
       flex: 3,
       child: Padding(
         padding: const EdgeInsets.only(left: 20, right: 20),
-        child: SingleChildScrollView(child: _getPage()),
+        child: Container(
+          alignment: Alignment.topLeft,
+          child: SingleChildScrollView(
+            child: _getPage(),
+          ),
+        ),
       ),
     );
   }
@@ -171,14 +188,9 @@ class _MenuPageState extends State<MenuPage> {
         ),
       ),
       backgroundColor: Colors.blueGrey,
-      duration: const Duration(seconds: 3),
+      duration: const Duration(seconds: 2),
       margin: const EdgeInsets.all(20),
-      icon:
-          // const Icon(
-          //   Icons.info_outline,
-          //   color: fontYellow,
-          // ),
-          BlinkIcon(),
+      icon: BlinkIcon(),
     ).show(context);
   }
 
@@ -202,6 +214,9 @@ class _MenuPageState extends State<MenuPage> {
       case Page.contacts:
         widget = const ContactsInfo();
         break;
+      case Page.skills:
+        widget = const SkillsInfo();
+        break;
     }
 
     return widget;
@@ -209,12 +224,15 @@ class _MenuPageState extends State<MenuPage> {
 
   _getButtonWithText(String text, Function onPressed) {
     return GestureDetector(
-      child: Text(
-        text,
-        style: const TextStyle(
-          fontFamily: 'FeatureMono',
-          fontSize: 50,
-          color: fontYellow,
+      child: Padding(
+        padding: const EdgeInsets.only(top: 5, bottom: 10),
+        child: Text(
+          text,
+          style: const TextStyle(
+            fontFamily: 'FeatureMono',
+            fontSize: 30,
+            color: fontYellow,
+          ),
         ),
       ),
       onTap: () => onPressed(),
