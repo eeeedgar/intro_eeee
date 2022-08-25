@@ -61,7 +61,7 @@ class _MenuSmallState extends State<MenuSmall> {
               ),
               _getButtonWithText(
                 'education',
-                    () {},
+                    () => Navigator.of(context).push(getRoute(const EducationalInfoSmall(), 'right'))
               ),
               _getButtonWithText(
                 'skills',
@@ -69,7 +69,7 @@ class _MenuSmallState extends State<MenuSmall> {
               ),
               _getButtonWithText(
                 'work experience',
-                    () {},
+                      () => Navigator.of(context).push(getRoute(const WorkInfoSmall(), 'right'))
               ),
               _getButtonWithText(
                 'licences',
@@ -389,10 +389,10 @@ class _MenuLargeState extends State<MenuLarge> {
         break;
 
       case Page.education:
-        widget = const EducationalInfo();
+        widget = const EducationalInfoLarge();
         break;
       case Page.work:
-        widget = const WorkInfo();
+        widget = const WorkInfoLarge();
         break;
       case Page.licences:
         widget = const LicencesInfo();
