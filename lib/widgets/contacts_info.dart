@@ -36,98 +36,101 @@ class _ContactsInfoSmallState extends State<ContactsInfoSmall> {
           ),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
+      body: SafeArea(
+        bottom: false,
         child: Container(
           alignment: Alignment.topLeft,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Padding(
-                padding: EdgeInsets.only(top: 10),
-                child: Text(
-                  'e-mail:',
+          child: Padding(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Padding(
+                  padding: EdgeInsets.only(top: 20),
+                  child: Text(
+                    'e-mail:',
+                    style: TextStyle(
+                      fontFamily: 'FeatureMono',
+                      fontSize: 20,
+                      color: fontYellow,
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 10, bottom: 30),
+                  child: GestureDetector(
+                          child: (emailCopiedGlobal) ?
+                          const Text(
+                            '> edgar.rakhmankulov@yandex.ru',
+                            style: TextStyle(
+                              fontFamily: 'FeatureMono',
+                              fontSize: 20,
+                              color: fontYellow,
+                            ),
+                          ) : getBlinkText(
+                            '> edgar.rakhmankulov@yandex.ru',
+                            fontSize: 20,
+                          ),
+                          onTap: () {
+                            setState(() {
+                              emailCopiedGlobal = true;
+                            });
+                            Clipboard.setData(const ClipboardData(
+                                text: 'edgar.rakhmankulov@yandex.ru'));
+                            _showFloatingFlushBar(context);
+                          },
+                        ),
+                ),
+                const Text(
+                  'telegram:',
                   style: TextStyle(
                     fontFamily: 'FeatureMono',
                     fontSize: 20,
                     color: fontYellow,
                   ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 10, bottom: 30),
-                child: GestureDetector(
-                        child: (emailCopiedGlobal) ?
-                        const Text(
-                          '> edgar.rakhmankulov@yandex.ru',
-                          style: TextStyle(
-                            fontFamily: 'FeatureMono',
-                            fontSize: 20,
-                            color: fontYellow,
-                          ),
-                        ) : getBlinkText(
-                          '> edgar.rakhmankulov@yandex.ru',
-                          fontSize: 20,
-                        ),
-                        onTap: () {
-                          setState(() {
-                            emailCopiedGlobal = true;
-                          });
-                          Clipboard.setData(const ClipboardData(
-                              text: 'edgar.rakhmankulov@yandex.ru'));
-                          _showFloatingFlushBar(context);
-                        },
+                Padding(
+                  padding: const EdgeInsets.only(top: 10, bottom: 30),
+                  child: GestureDetector(
+                    child: const Text(
+                      '> @eeeedgar',
+                      style: TextStyle(
+                        fontFamily: 'FeatureMono',
+                        fontSize: 30,
+                        color: fontYellow,
                       ),
-              ),
-              const Text(
-                'telegram:',
-                style: TextStyle(
-                  fontFamily: 'FeatureMono',
-                  fontSize: 20,
-                  color: fontYellow,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 10, bottom: 30),
-                child: GestureDetector(
-                  child: const Text(
-                    '> @eeeedgar',
-                    style: TextStyle(
-                      fontFamily: 'FeatureMono',
-                      fontSize: 30,
-                      color: fontYellow,
                     ),
+                    onTap: () {
+                      launchUrl(Uri.parse('https://t.me/eeeedgar'));
+                    },
                   ),
-                  onTap: () {
-                    launchUrl(Uri.parse('https://t.me/eeeedgar'));
-                  },
                 ),
-              ),
-              const Text(
-                'github:',
-                style: TextStyle(
-                  fontFamily: 'FeatureMono',
-                  fontSize: 20,
-                  color: fontYellow,
+                const Text(
+                  'github:',
+                  style: TextStyle(
+                    fontFamily: 'FeatureMono',
+                    fontSize: 20,
+                    color: fontYellow,
+                  ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 10, bottom: 30),
-                child: GestureDetector(
-                  child: const Text(
-                    '> eeeedgar',
-                    style: TextStyle(
-                      fontFamily: 'FeatureMono',
-                      fontSize: 30,
-                      color: fontYellow,
+                Padding(
+                  padding: const EdgeInsets.only(top: 10, bottom: 30),
+                  child: GestureDetector(
+                    child: const Text(
+                      '> eeeedgar',
+                      style: TextStyle(
+                        fontFamily: 'FeatureMono',
+                        fontSize: 30,
+                        color: fontYellow,
+                      ),
                     ),
+                    onTap: () {
+                      launchUrl(Uri.parse('https://github.com/eeeedgar'));
+                    },
                   ),
-                  onTap: () {
-                    launchUrl(Uri.parse('https://github.com/eeeedgar'));
-                  },
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
