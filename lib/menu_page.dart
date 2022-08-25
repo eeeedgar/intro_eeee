@@ -57,8 +57,7 @@ class _MenuSmallState extends State<MenuSmall> {
               ),
               _getButtonWithText(
                 'contacts',
-                    () {
-                },
+                      () => Navigator.of(context).push(getRoute(const ContactsInfoSmall(), 'right'))
               ),
               _getButtonWithText(
                 'education',
@@ -399,7 +398,7 @@ class _MenuLargeState extends State<MenuLarge> {
         widget = const LicencesInfo();
         break;
       case Page.contacts:
-        widget = const ContactsInfo();
+        widget = const ContactsInfoLarge();
         break;
       case Page.skills:
         widget = const SkillsInfo();
