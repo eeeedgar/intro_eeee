@@ -52,7 +52,13 @@ class _MenuPageState extends State<MenuPage> {
                     () => Navigator.of(context).pop(),
                   ),
                   (selectedPage == Page.personal)
-                      ? getBlinkText('personal')
+                      ? const Text(
+                          'personal',
+                          style: TextStyle(
+                              color: fontRed,
+                              fontFamily: 'FeatureMono',
+                              fontSize: 40),
+                        )
                       : _getButtonWithText(
                           'personal',
                           () {
@@ -64,7 +70,13 @@ class _MenuPageState extends State<MenuPage> {
                           },
                         ),
                   (selectedPage == Page.contacts)
-                      ? getBlinkText('contacts')
+                      ? const Text(
+                    'contacts',
+                    style: TextStyle(
+                        color: fontRed,
+                        fontFamily: 'FeatureMono',
+                        fontSize: 40),
+                  )
                       : _getButtonWithText(
                           'contacts',
                           () {
@@ -76,7 +88,13 @@ class _MenuPageState extends State<MenuPage> {
                           },
                         ),
                   (selectedPage == Page.education)
-                      ? getBlinkText('education')
+                      ? const Text(
+                    'education',
+                    style: TextStyle(
+                        color: fontRed,
+                        fontFamily: 'FeatureMono',
+                        fontSize: 40),
+                  )
                       : _getButtonWithText(
                           'education',
                           () {
@@ -88,7 +106,13 @@ class _MenuPageState extends State<MenuPage> {
                           },
                         ),
                   (selectedPage == Page.skills)
-                      ? getBlinkText('skills')
+                      ? const Text(
+                    'skills',
+                    style: TextStyle(
+                        color: fontRed,
+                        fontFamily: 'FeatureMono',
+                        fontSize: 40),
+                  )
                       : _getButtonWithText(
                           'skills',
                           () {
@@ -100,7 +124,13 @@ class _MenuPageState extends State<MenuPage> {
                           },
                         ),
                   (selectedPage == Page.work)
-                      ? getBlinkText('work experience')
+                      ? const Text(
+                    'work experience',
+                    style: TextStyle(
+                        color: fontRed,
+                        fontFamily: 'FeatureMono',
+                        fontSize: 40),
+                  )
                       : _getButtonWithText(
                           'work experience',
                           () {
@@ -112,7 +142,13 @@ class _MenuPageState extends State<MenuPage> {
                           },
                         ),
                   (selectedPage == Page.licences)
-                      ? getBlinkText('licences')
+                      ? const Text(
+                    'licence',
+                    style: TextStyle(
+                        color: fontRed,
+                        fontFamily: 'FeatureMono',
+                        fontSize: 40),
+                  )
                       : _getButtonWithText(
                           'licences',
                           () {
