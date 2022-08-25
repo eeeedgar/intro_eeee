@@ -53,15 +53,15 @@ class IntroSmall extends StatelessWidget {
             ),
             Flexible(
               flex: 1,
-              child: GestureDetector(
-                child: Container(
-                    color: Colors.black38,
-                    alignment: Alignment.center,
-                    width: 500,
-                    child: getBlinkText('wanna know\nabout me?')),
-                onTap: () => {
-                  Navigator.of(context).push(getRoute(const Menu(), 'down'))
-                },
+              child: MaterialButton(
+                minWidth: 500,
+                height: 250,
+                color: Colors.black38,
+                highlightColor: Colors.black54,
+                splashColor: const Color(0x00000000),
+                child: getBlinkText('wanna know\nabout me?'),
+                onPressed: () =>
+                    Navigator.of(context).push(getRoute(const Menu(), 'down')),
               ),
             ),
           ],
@@ -90,8 +90,7 @@ class IntroLarge extends StatelessWidget {
                 child: AnimatedTextKit(
                   isRepeatingAnimation: false,
                   animatedTexts: [
-                    TyperAnimatedText(
-                        greetingMessage,
+                    TyperAnimatedText(greetingMessage,
                         curve: Curves.slowMiddle,
                         textStyle: const TextStyle(
                           fontWeight: FontWeight.normal,
@@ -105,15 +104,15 @@ class IntroLarge extends StatelessWidget {
             ),
             Flexible(
               flex: 2,
-              child: GestureDetector(
-                child: Container(
-                    color: Colors.black38,
-                    alignment: Alignment.center,
-                    width: 500,
-                    child: getBlinkText('wanna know\nabout me?')),
-                onTap: () => {
-                  Navigator.of(context).push(getRoute(const Menu(), 'down'))
-                },
+              child: MaterialButton(
+                minWidth: 500,
+                height: 250,
+                color: Colors.black38,
+                highlightColor: Colors.black54,
+                splashColor: const Color(0x00000000),
+                child: getBlinkText('wanna know\nabout me?'),
+                onPressed: () =>
+                    Navigator.of(context).push(getRoute(const Menu(), 'down')),
               ),
             ),
           ],
