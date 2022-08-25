@@ -54,17 +54,13 @@ class IntroSmall extends StatelessWidget {
             Flexible(
               flex: 1,
               child: GestureDetector(
-                child: Center(
-                  child: Container(
-                      color: Colors.blueGrey,
-                      alignment: Alignment.center,
-                      width: 350,
-                      height: 200,
-                      child:
-                          getBlinkText('wanna know\nabout me?', fontSize: 40)),
-                ),
+                child: Container(
+                    color: Colors.black38,
+                    alignment: Alignment.center,
+                    width: 500,
+                    child: getBlinkText('wanna know\nabout me?')),
                 onTap: () => {
-                  Navigator.of(context).push(getRoute(const MenuPage(), 'down'))
+                  Navigator.of(context).push(getRoute(const Menu(), 'down'))
                 },
               ),
             ),
@@ -116,7 +112,7 @@ class IntroLarge extends StatelessWidget {
                     width: 500,
                     child: getBlinkText('wanna know\nabout me?')),
                 onTap: () => {
-                  Navigator.of(context).push(getRoute(const MenuPage(), 'down'))
+                  Navigator.of(context).push(getRoute(const Menu(), 'down'))
                 },
               ),
             ),
