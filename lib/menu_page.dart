@@ -53,7 +53,7 @@ class _MenuSmallState extends State<MenuSmall> {
               ),
               _getButtonWithText(
                 'personal',
-                    () => Navigator.of(context).push(getRoute(const PersonalInfo(), 'right'))
+                    () => Navigator.of(context).push(getRoute(const PersonalInfoSmall(), 'right'))
               ),
               _getButtonWithText(
                 'contacts',
@@ -386,7 +386,7 @@ class _MenuLargeState extends State<MenuLarge> {
 
     switch (selectedPage) {
       case Page.personal:
-        widget = const PersonalInfo();
+        widget = const PersonalInfoLarge();
         break;
 
       case Page.education:

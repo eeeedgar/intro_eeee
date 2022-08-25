@@ -1,27 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:intro_eeee/constants.dart';
 
-class PersonalInfo extends StatelessWidget {
-  const PersonalInfo({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (context, constraints) {
-      if (constraints.maxWidth < 700 || constraints.maxHeight < 700) {
-        return const PersonalInfoSmall();
-      } else {
-        return const PersonalInfoLarge();
-      }
-    });
-  }
-}
-
 class PersonalInfoSmall extends StatelessWidget {
   const PersonalInfoSmall({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: MaterialButton(
+        minWidth: 200,
+        height: 100,
+        color: Colors.black38,
+        highlightColor: Colors.black54,
+        splashColor: const Color(0x00000000),
+        onPressed: () => Navigator.of(context).pop(),
+        child: const Text(
+          'back',
+          style: TextStyle(
+            fontFamily: 'FeatureMono',
+            color: fontYellow,
+            fontSize: 30,
+          ),
+        ),
+      ),
       backgroundColor: backgroundBlue,
       body: Container(
           alignment: Alignment.topLeft,
@@ -29,7 +31,8 @@ class PersonalInfoSmall extends StatelessWidget {
             children: const [
               TableRow(children: [
                 Padding(
-                  padding: EdgeInsets.only(left: 8, right: 8, top: 20, bottom: 8),
+                  padding:
+                      EdgeInsets.only(left: 8, right: 8, top: 20, bottom: 8),
                   child: Text(
                     'First name:',
                     style: TextStyle(
@@ -40,7 +43,8 @@ class PersonalInfoSmall extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(left: 8, right: 8, top: 20, bottom: 8),
+                  padding:
+                      EdgeInsets.only(left: 8, right: 8, top: 20, bottom: 8),
                   child: Text(
                     'Edgar',
                     style: TextStyle(
@@ -129,14 +133,13 @@ class PersonalInfoSmall extends StatelessWidget {
   }
 }
 
-
 class PersonalInfoLarge extends StatelessWidget {
   const PersonalInfoLarge({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: backgroundBlue,
+        color: backgroundBlue,
         alignment: Alignment.topLeft,
         child: Table(
           children: const [
